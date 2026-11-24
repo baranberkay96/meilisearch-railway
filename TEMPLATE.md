@@ -32,7 +32,7 @@ Variables: `MEILI_MASTER_KEY` (secret 40, alphanumeric), `MEILI_ENV` (production
 
 | Service | Idle RAM | Typical RAM | CPU |
 |---|---|---|---|
-| Meilisearch | IDLE_RAM (measured) | 100 MB-2 GB+ (index size, indexing bursts) | ≈0 idle, bursts while indexing |
+| Meilisearch | ≈0.1 GB (measured 20-235 MB after a small test index) | 100 MB-2 GB+ (index size, indexing bursts) | ≈0 idle, bursts while indexing |
 
 Estimated cost: $1-5/month for small indexes + volume ($0.15/GB-month). Minimum plan: Trial (small indexes).
 

@@ -72,7 +72,7 @@ Meilisearch is a single node here: scale it vertically. Indexing is the heavy pa
 
 **Resources**
 
-Idle use measured on Railway is small (see TEMPLATE.md); the volume costs $0.15/GB-month. Trial is enough for small indexes.
+Measured on Railway: about 100 MB RAM idle with a small index, near 0 vCPU; the volume costs $0.15/GB-month. Trial is enough for small indexes.
 
 **Licence**
 
