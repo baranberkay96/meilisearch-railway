@@ -1,0 +1,97 @@
+{
+ "name": "Meilisearch 1.58 Search Engine",
+ "idSeed": "Meilisearch 1.58 Search Engine / 2026-11-24",
+ "description": "Typo-tolerant full-text, vector and hybrid search API with a master key.",
+ "category": "Other",
+ "tags": [
+  "meilisearch",
+  "search",
+  "search-engine",
+  "full-text-search",
+  "vector-search",
+  "algolia-alternative"
+ ],
+ "image": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/meilisearch.svg",
+ "upstream": {
+  "image": "getmeili/meilisearch:v1.58.0@sha256:cee0d2e31191594ff8e1651eb144aabd95b389a0bc3532327ecfb9ed91dffe7e (Community Edition, MIT)",
+  "released": "2026-11-23",
+  "checked": "2026-11-24"
+ },
+ "services": {
+  "Meilisearch": {
+   "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/meilisearch.svg",
+   "source": {
+    "repo": "baranberkay96/meilisearch-railway",
+    "rootDirectory": "/services/meilisearch"
+   },
+   "healthcheckPath": "/health",
+   "healthcheckTimeout": 300,
+   "restartPolicyType": "ALWAYS",
+   "numReplicas": 1,
+   "publicDomain": true,
+   "targetPort": 7700,
+   "tcpProxy": null,
+   "volume": {
+    "mountPath": "/meili_data"
+   },
+   "variables": {
+    "MEILI_MASTER_KEY": {
+     "defaultValue": "${{secret(40, \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\")}}",
+     "description": "Master key (16+ characters). Use it to create scoped API keys; never ship it to browsers.",
+     "required": false
+    },
+    "MEILI_ENV": {
+     "defaultValue": "production",
+     "description": "production (default) or development (adds the built-in web dashboard; the key is still required).",
+     "required": false
+    },
+    "MEILI_NO_ANALYTICS": {
+     "defaultValue": "true",
+     "description": "true turns off Meilisearch's anonymous telemetry.",
+     "required": false
+    },
+    "MEILI_UPGRADE_DB": {
+     "defaultValue": "true",
+     "description": "true lets a newer Meilisearch upgrade the database in place (dumpless upgrade).",
+     "required": false
+    },
+    "MEILI_SCHEDULE_SNAPSHOT": {
+     "defaultValue": "",
+     "description": "Seconds between snapshots into /meili_data/snapshots (e.g. 86400). Empty = off.",
+     "required": false
+    },
+    "MEILI_HTTP_PAYLOAD_SIZE_LIMIT": {
+     "defaultValue": "100MB",
+     "description": "Largest accepted request body (document batches).",
+     "required": false
+    },
+    "MEILI_LOG_LEVEL": {
+     "defaultValue": "INFO",
+     "description": "ERROR, WARN, INFO, DEBUG or TRACE.",
+     "required": false
+    },
+    "PORT": {
+     "defaultValue": "7700",
+     "description": "Port Meilisearch listens on; the public domain and healthcheck use it.",
+     "required": false
+    },
+    "MEILISEARCH_PRIVATE_URL": {
+     "defaultValue": "http://${{RAILWAY_PRIVATE_DOMAIN}}:${{PORT}}",
+     "description": "URL for other Railway services: reference ${{Meilisearch.MEILISEARCH_PRIVATE_URL}}.",
+     "required": false
+    },
+    "MEILISEARCH_PUBLIC_URL": {
+     "defaultValue": "https://${{RAILWAY_PUBLIC_DOMAIN}}",
+     "description": "Public HTTPS URL (API; browser search with a search-only key).",
+     "required": false
+    },
+    "RAILWAY_DEPLOYMENT_DRAINING_SECONDS": {
+     "defaultValue": "15",
+     "description": "Seconds Meilisearch gets to finish writes on redeploy.",
+     "required": false
+    }
+   }
+  }
+ },
+ "buckets": []
+}
