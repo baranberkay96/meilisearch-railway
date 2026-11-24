@@ -1,5 +1,7 @@
 # Deploy and Host Meilisearch with Railway
 
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/meilisearch-158-search-engine?referralCode=20H68q)
+
 Meilisearch is an open-source search engine with a simple REST API: typo-tolerant full-text search, filters, facets, geo search and vector or hybrid (AI) search, with answers in milliseconds. This template runs the official Meilisearch Community Edition on a Railway volume, secured with a generated master key.
 
 ## About Hosting Meilisearch
